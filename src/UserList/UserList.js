@@ -1,5 +1,7 @@
 import React from 'react'
 import Default from './Default';
+import Loading from './Loading';
+import List from './List'
 
 class UserList extends React.Component {
     state = {
@@ -7,13 +9,33 @@ class UserList extends React.Component {
         isLoadingUsers: false
     }
 
+    loadUsers = () => {
+        this.setState({
+            isLoadingUsers: true
+        })
+
+        fetch('https://fir-sndbox.firebaseio.com/.json')
+            .then(response => response.json())
+            .then(data => this.setState({
+                users: data,
+                isLoadingUsers:false
+            }))
+    }
+
     render() {
         return (
             <div>
-                <Default
-                    clickHandler={() => alert('cos!')}
-                    label={'Click'}
-                />
+                {this.state.isLoadingUsers ?
+                    <Loading />
+                    :
+                    this.state.users ?
+                        <List />
+                        :
+                        <Default
+                            clickHandler={this.loadUsers}
+                            label={'Click'}
+                        />
+                }
             </div>
         )
     }
