@@ -3,13 +3,16 @@ import PropTypes from 'prop-types'
 
 const User = (props) => (
     <div>
+        <button>
+            Edit!
+            </button>
         {props.user.name}
     </div>
 
 )
 
 User.propTypes = {
-    users: PropTypes.array.isRequired
+    user: PropTypes.object.isRequired
 }
 
 export default User

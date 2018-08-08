@@ -8,7 +8,9 @@ const Forms = (props) => (
             value={props.newUserName}
             onChange={props.newUserChangeHandler}
         />
-        <button>
+        <button
+        onClick={props.onAddNewUserClick}
+        >
             Add user!
         </button>
     </div>
@@ -16,7 +18,8 @@ const Forms = (props) => (
 
 Forms.propTypes = {
     newUserName: PropTypes.string.isRequired,
-    newUserChangeHandler: PropTypes.func.isRequired
+    newUserChangeHandler: PropTypes.func.isRequired,
+    onAddNewUserClick: PropTypes.func.isRequired
 }
 
 export default Forms
