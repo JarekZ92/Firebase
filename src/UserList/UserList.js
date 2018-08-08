@@ -10,7 +10,10 @@ class UserList extends React.Component {
     render() {
         return (
             <div>
-            <Default />
+                <Default
+                    clickHandler={() => alert('cos!')}
+                    label={'Click'}
+                />
             </div>
         )
     }
