@@ -1,15 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const User = (props) => (
-    <div>
-        <button>
-            Edit!
-            </button>
-        {props.user.name}
-    </div>
+class User extends React.Component {
+    render() {
+        return (
+            <div>
+                <button>
+                    Edit!
+                    </button>
+                {this.props.user.name}
+            </div>
+        )
+    }
 
-)
+}
 
 User.propTypes = {
     user: PropTypes.object.isRequired
