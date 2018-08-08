@@ -9,6 +9,7 @@ const List = (props) => (
                 <User
                     key={user.key}
                     user={user}
+                    odEditUserHandler={props.odEditUserHandler}
                 />
             ))
         }
@@ -16,7 +17,8 @@ const List = (props) => (
 )
 
 List.propTypes = {
-    users: PropTypes.array.isRequired
+    users: PropTypes.array.isRequired,
+    odEditUserHandler: PropTypes.func.isRequired
 }
 
 export default List
