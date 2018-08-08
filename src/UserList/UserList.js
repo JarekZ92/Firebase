@@ -2,9 +2,9 @@ import React from 'react'
 
 import Default from './Default';
 import Loading from './Loading';
-import { mapObjectToArray } from '../utils'
+import List from './List'
 
-import { utils } from './utils'
+import { mapObjectToArray } from '../utils'
 
 class UserList extends React.Component {
     state = {
@@ -17,7 +17,7 @@ class UserList extends React.Component {
             isLoadingUsers: true
         })
 
-        fetch('https://fir-sndbox.firebaseio.com/.json')
+        fetch('https://fir-sndbox.firebaseio.com/firebase-users.json')
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -34,7 +34,9 @@ class UserList extends React.Component {
                     <Loading />
                     :
                     this.state.users ?
-                        <List />
+                        <List
+                            users={this.state.users}
+                        />
                         :
                         <Default
                             clickHandler={this.loadUsers}
