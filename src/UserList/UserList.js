@@ -1,7 +1,10 @@
 import React from 'react'
+
 import Default from './Default';
 import Loading from './Loading';
-import List from './List'
+import { mapObjectToArray } from '../utils'
+
+import { utils } from './utils'
 
 class UserList extends React.Component {
     state = {
@@ -16,10 +19,12 @@ class UserList extends React.Component {
 
         fetch('https://fir-sndbox.firebaseio.com/.json')
             .then(response => response.json())
-            .then(data => this.setState({
-                users: data,
-                isLoadingUsers:false
-            }))
+            .then(data => {
+                this.setState({
+                    users: mapObjectToArray(data),
+                    isLoadingUsers: false
+                })
+            })
     }
 
     render() {
