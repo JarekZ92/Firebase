@@ -3,7 +3,7 @@ import React from 'react'
 import LogInForms from './LogInForms';
 
 class Auth extends React.Component {
-    state ={
+    state = {
         isLogedIn: false
     }
 
@@ -20,8 +20,8 @@ class Auth extends React.Component {
                     this.state.isLogedIn ?
                         this.props.children
                         :
-                        <LogInForms 
-                        onLogInClickHandler={this.onLogInClickHandler}
+                        <LogInForms
+                            onLogInClickHandler={this.onLogInClickHandler}
                         />
                 }
             </div>
