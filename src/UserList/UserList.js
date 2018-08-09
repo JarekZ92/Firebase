@@ -59,18 +59,9 @@ class UserList extends React.Component {
     }
 
     odEditUserHandler = (key, newName) => {
-        return database.ref(`/firebase-users/${key}`).update({
+        database.ref(`/firebase-users/${key}`).update({
             name: newName
         })
-        // return fetch(
-        //     `https://fir-sndbox.firebaseio.com/firebase-users/${key}/.json`,
-        //     {
-        //         method: "PATCH",
-        //         body: JSON.stringify({
-        //             name: newName
-        //         })
-        //     }
-        // )
     }
 
     render() {
