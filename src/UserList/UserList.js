@@ -16,20 +16,21 @@ class UserList extends React.Component {
         isLoadingUsers: false
     }
 
-    loadUsers = () => {
+    intUsersSync = () => {
         this.setState({
             isLoadingUsers: true
         })
 
-        // fetch('https://fir-sndbox.firebaseio.com/firebase-users.json')
-        database.ref('/firebase-users').once('value')
-            .then(snapshot => snapshot.val())
-            .then(data => {
+        database.ref('/firebase-users').on(
+            'value',
+            snapshot => {
+                const data = snapshot.val()
                 this.setState({
                     users: mapObjectToArray(data),
                     isLoadingUsers: false
                 })
-            })
+            }
+        )
     }
 
     newUserChangeHandler = (event) => {
@@ -50,7 +51,7 @@ class UserList extends React.Component {
 
         fetch('https://fir-sndbox.firebaseio.com/firebase-users.json', request)
             .then(response => {
-                this.loadUsers()
+                this.intUsersSync()
                 this.setState({
                     newUserName: ''
                 })
@@ -68,14 +69,14 @@ class UserList extends React.Component {
             }
         )
             .then(() => {
-                this.loadUsers()
+                this.intUsersSync()
             })
     }
 
     render() {
         return (
             <div>
-                {this.state.isLoadingUsers ?
+                {this.state.intUsersSync ?
                     <Loading />
                     :
                     this.state.users ?
@@ -92,7 +93,7 @@ class UserList extends React.Component {
                         </div>
                         :
                         <Default
-                            clickHandler={this.loadUsers}
+                            clickHandler={this.intUsersSync}
                             label={'Click'}
                         />
                 }
