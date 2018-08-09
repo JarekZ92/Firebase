@@ -4,6 +4,7 @@ import Default from './Default';
 import Loading from './Loading';
 import List from './List'
 import Forms from './Forms'
+import Search from './Search'
 
 import { mapObjectToArray } from '../utils'
 
@@ -12,6 +13,7 @@ import { database } from '../FirebaseConfig'
 class UserList extends React.Component {
     state = {
         newUserName: '',
+        searchPhrase: '',
         users: null,
         isLoadingUsers: false
     }
@@ -64,6 +66,12 @@ class UserList extends React.Component {
         })
     }
 
+    onSearchPraseChanged = event => {
+        this.setState({
+            searchPhrase: event.target.value
+        })
+    }
+
     render() {
         return (
             <div>
@@ -77,8 +85,16 @@ class UserList extends React.Component {
                                 newUserChangeHandler={this.newUserChangeHandler}
                                 onAddNewUserClick={this.onAddNewUserClick}
                             />
+                            <Search
+                                searchPhrase={this.searchPhrase}
+                                onSearchPraseChanged={this.onSearchPraseChanged}
+                            />
                             <List
-                                users={this.state.users}
+                                users={
+                                    this.state.users.filter(
+                                        user => user.name.indexOf(this.state.searchPhrase) !== -1
+                                    )
+                                }
                                 odEditUserHandler={this.odEditUserHandler}
                             />
                         </div>
