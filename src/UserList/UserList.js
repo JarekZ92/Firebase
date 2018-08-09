@@ -69,7 +69,6 @@ class UserList extends React.Component {
         })
     }
 
-
     render() {
         return (
             <div>
@@ -86,7 +85,6 @@ class UserList extends React.Component {
                             <List
                                 users={this.state.users}
                                 odEditUserHandler={this.odEditUserHandler}
-
                             />
                         </div>
                         :
