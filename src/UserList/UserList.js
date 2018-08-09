@@ -73,6 +73,9 @@ class UserList extends React.Component {
     }
 
     render() {
+        const filteredUsers = this.state.users && this.state.users.filter(
+            user => user.name.indexOf(this.state.searchPhrase) !== -1
+        )
         return (
             <div>
                 {this.state.intUsersSync ?
@@ -90,11 +93,7 @@ class UserList extends React.Component {
                                 onSearchPraseChanged={this.onSearchPraseChanged}
                             />
                             <List
-                                users={
-                                    this.state.users.filter(
-                                        user => user.name.indexOf(this.state.searchPhrase) !== -1
-                                    )
-                                }
+                                users={filteredUsers}
                                 odEditUserHandler={this.odEditUserHandler}
                             />
                         </div>
