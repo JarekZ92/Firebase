@@ -1,16 +1,14 @@
 import firebase from 'firebase'
 
 const config = {
-    apiKey: "AIzaSyBiZSfvMUXkOvOS1aj15L7QoWICS4EAyYE",
-    authDomain: "jfddl5-messengers.firebaseapp.com",
-    databaseURL: "https://jfddl5-messengers.firebaseio.com",
-    projectId: "jfddl5-messengers",
-    storageBucket: "jfddl5-messengers.appspot.com",
-    messagingSenderId: "442694238239"
+    apiKey: "AIzaSyDagC5Og2vmqTt5wGT5u5WyMv19m5YeiuQ",
+    authDomain: "fir-sndbox.firebaseapp.com",
+    databaseURL: "https://fir-sndbox.firebaseio.com",
+    projectId: "fir-sndbox",
+    storageBucket: "fir-sndbox.appspot.com",
+    messagingSenderId: "273741848287"
 };
 
 firebase.initializeApp(config);
-
-const database = firebase.database()
 
 export const database = firebase.database()

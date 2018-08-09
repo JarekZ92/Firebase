@@ -7,6 +7,8 @@ import Forms from './Forms'
 
 import { mapObjectToArray } from '../utils'
 
+import { database } from '../FirebaseConfig'
+
 class UserList extends React.Component {
     state = {
         newUserName: '',
@@ -19,8 +21,9 @@ class UserList extends React.Component {
             isLoadingUsers: true
         })
 
-        fetch('https://fir-sndbox.firebaseio.com/firebase-users.json')
-            .then(response => response.json())
+        // fetch('https://fir-sndbox.firebaseio.com/firebase-users.json')
+        database.ref('/firebase-users').once('value')
+            .then(snapshot => snapshot.val())
             .then(data => {
                 this.setState({
                     users: mapObjectToArray(data),
@@ -64,9 +67,9 @@ class UserList extends React.Component {
                 })
             }
         )
-        .then(() => {
-            this.loadUsers()
-        })
+            .then(() => {
+                this.loadUsers()
+            })
     }
 
     render() {
