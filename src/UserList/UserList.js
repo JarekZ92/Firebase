@@ -59,7 +59,7 @@ class UserList extends React.Component {
     }
 
     odEditUserHandler = (key, newName) => {
-        fetch(
+        return fetch(
             `https://fir-sndbox.firebaseio.com/firebase-users/${key}/.json`,
             {
                 method: "PATCH",
