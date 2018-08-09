@@ -55,7 +55,18 @@ class UserList extends React.Component {
     }
 
     odEditUserHandler = (key, newName) => {
-        console.log(key,newName)
+        fetch(
+            `https://fir-sndbox.firebaseio.com/firebase-users/${key}/.json`,
+            {
+                method: "PATCH",
+                body: JSON.stringify({
+                    name: newName
+                })
+            }
+        )
+        .then(() => {
+            this.loadUsers()
+        })
     }
 
 
@@ -74,8 +85,8 @@ class UserList extends React.Component {
                             />
                             <List
                                 users={this.state.users}
-                                odEditUserHandler = {this.odEditUserHandler}
-                            
+                                odEditUserHandler={this.odEditUserHandler}
+
                             />
                         </div>
                         :

@@ -61,7 +61,7 @@ class User extends React.Component {
 
 User.propTypes = {
     user: PropTypes.object.isRequired,
-    odEditUserHandler: PropTypes
+    odEditUserHandler: PropTypes.func.isRequired
 }
 
 export default User
