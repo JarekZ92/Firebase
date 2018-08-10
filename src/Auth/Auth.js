@@ -23,7 +23,7 @@ class Auth extends React.Component {
         })
     }
 
-    onLogInClickHandler = () => {
+    onLogInByGoogleClickHandler = () => {
         auth.signInWithPopup(googleProvider)
             .catch((error) => {
                 console.log(error)
@@ -39,7 +39,7 @@ class Auth extends React.Component {
                         this.props.children
                         :
                         <LogInForms
-                            onLogInClickHandler={this.onLogInClickHandler}
+                            onLogInByGoogleClickHandler={this.onLogInByGoogleClickHandler}
                         />
                 }
             </div>

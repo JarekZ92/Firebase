@@ -6,14 +6,14 @@ import LogInByEmailAndPassword from './LogInByEmailAndPassword'
 const LoginForms = (props) => (
     <div>
         <LoginByGoogle
-            onLogInClickHandler={props.onLogInClickHandler}
+            onLogInClickHandler={props.onLogInByGoogleClickHandler}
         />
         <LogInByEmailAndPassword
             emailValue={props.onEmailChangedHandler}
             passwordValue={props.passwordValue}
             onEmailChangedHandler={props.onEmailChangedHandler}
             onPasswordChangedHandler={props.onPasswordChangedHandler}
-            onLogInClickHandler={props.onLogInClickHandler}
+            onLogInClickHandler={props.onLogInByEmailAndPasswordClickHandler}
         />
     </div>
 )
