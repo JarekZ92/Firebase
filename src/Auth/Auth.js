@@ -54,11 +54,20 @@ class Auth extends React.Component {
                         :
                         <LogInForms
                             onLogInByGoogleClickHandler={this.onLogInByGoogleClickHandler}
-                            emailValue={this.state.logInEmail}
-                            passwordValue={this.state.logInPassword}
-                            onEmailChangedHandler={this.onEmailChangedHandler}
-                            onPasswordChangedHandler={this.onPasswordChangedHandler}
-                            onLogInByEmailAndPasswordClickHandler={this.onLogInByEmailAndPasswordClickHandler}
+                            logInProps={{
+                                emailValue: this.state.logInEmail,
+                                passwordValue: this.state.logInPassword,
+                                onEmailChangedHandler: this.onEmailChangedHandler,
+                                onPasswordChangedHandler: this.onPasswordChangedHandler,
+                                onLogInByEmailAndPasswordClickHandler: this.onLogInByEmailAndPasswordClickHandler
+                            }}
+                            singUpProps={{
+                                emailValue: this.state.logInEmail,
+                                passwordValue: this.state.logInPassword,
+                                onEmailChangedHandler: this.onEmailChangedHandler,
+                                onPasswordChangedHandler: this.onPasswordChangedHandler,
+                                onLogInByEmailAndPasswordClickHandler: this.onLogInByEmailAndPasswordClickHandler
+                            }}
                         />
                 }
             </div>
