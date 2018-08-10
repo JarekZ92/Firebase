@@ -65,7 +65,16 @@ class Auth extends React.Component {
             <div>
                 {
                     this.state.isLogedIn ?
-                        this.props.children
+                        <div>
+                            <div>
+                                <button
+                                    onClick={() => auth.signOut()}
+                                >
+                                    Log Out!
+                                </button>
+                            </div>
+                            {this.props.children}
+                        </div>
                         :
                         <LogInForms
                             onLogInByGoogleClickHandler={this.onLogInByGoogleClickHandler}
@@ -81,7 +90,7 @@ class Auth extends React.Component {
                                 passwordValue: this.state.signUpPassword,
                                 onEmailChangedHandler: this.singUpFunctions.onEmailChangedHandler,
                                 onPasswordChangedHandler: this.singUpFunctions.onPasswordChangedHandler,
-                                onSingUpClickHandler: this.singUpFunctions.onSingUpByEmailAndPasswordClickHandler
+                                onSignUpByEmailAndPasswordClickHandler: this.singUpFunctions.onSingUpByEmailAndPasswordClickHandler
                             }}
                         />
                 }
