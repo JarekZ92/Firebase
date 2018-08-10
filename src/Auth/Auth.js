@@ -6,7 +6,9 @@ import { auth, googleProvider } from '../FirebaseConfig'
 
 class Auth extends React.Component {
     state = {
-        isLogedIn: false
+        isLogedIn: false,
+        logInEmail: '',
+        logInPassword: ''
     }
 
     componentDidMount() {
@@ -31,6 +33,10 @@ class Auth extends React.Component {
             })
     }
 
+    onEmailChangedHandler = event => this.setState({ logInEmail: event.target.value })
+    onPasswordChangedHandler = event => this.setState({ logInPassword: event.target.value })
+
+
     render() {
         return (
             <div>
@@ -40,6 +46,11 @@ class Auth extends React.Component {
                         :
                         <LogInForms
                             onLogInByGoogleClickHandler={this.onLogInByGoogleClickHandler}
+                            emailValue={this.state.logInEmail}
+                            passwordValue={this.state.logInPassword}
+                            onEmailChangedHandler={this.onEmailChangedHandler}
+                            onPasswordChangedHandler={this.onPasswordChangedHandler}
+                            onLogInByEmailAndPasswordClickHandler={this.onLogInByEmailAndPasswordClickHandler}
                         />
                 }
             </div>

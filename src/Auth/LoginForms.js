@@ -9,7 +9,7 @@ const LoginForms = (props) => (
             onLogInClickHandler={props.onLogInByGoogleClickHandler}
         />
         <LogInByEmailAndPassword
-            emailValue={props.onEmailChangedHandler}
+            emailValue={props.emailValue}
             passwordValue={props.passwordValue}
             onEmailChangedHandler={props.onEmailChangedHandler}
             onPasswordChangedHandler={props.onPasswordChangedHandler}
