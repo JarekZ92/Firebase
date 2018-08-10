@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LogInForms from './LoginForms';
+import LogInForms from './LoginForms'
 
 import { auth, googleProvider } from '../FirebaseConfig'
 
@@ -8,7 +8,10 @@ class Auth extends React.Component {
     state = {
         isLogedIn: false,
         logInEmail: '',
-        logInPassword: ''
+        logInPassword: '',
+        signUpEmail: '',
+        signUpPassword: ''
+
     }
 
     componentDidMount() {
@@ -45,8 +48,17 @@ class Auth extends React.Component {
         }
     }
 
-
-
+    singUpFunctions = {
+        onEmailChangedHandler: event => this.setState({ signUpEmail: event.target.value }),
+        onPasswordChangedHandler: event => this.setState({ signUpPassword: event.target.value }),
+        onSingUpByEmailAndPasswordClickHandler: () => {
+            auth.createUserWithEmailAndPassword(this.state.signUpEmail, this.state.signUpPassword)
+                .catch((error) => {
+                    console.log(error)
+                    alert('Błąd logowania!')
+                })
+        }
+    }
 
     render() {
         return (
@@ -65,11 +77,11 @@ class Auth extends React.Component {
                                 onLogInByEmailAndPasswordClickHandler: this.logInFunctions.onLogInByEmailAndPasswordClickHandler
                             }}
                             singUpProps={{
-                                emailValue: this.state.logInEmail,
-                                passwordValue: this.state.logInPassword,
-                                onEmailChangedHandler: this.onEmailChangedHandler,
-                                onPasswordChangedHandler: this.onPasswordChangedHandler,
-                                onLogInByEmailAndPasswordClickHandler: this.logInFunctions.onLogInByEmailAndPasswordClickHandler
+                                emailValue: this.state.signUpEmail,
+                                passwordValue: this.state.signUpPassword,
+                                onEmailChangedHandler: this.singUpFunctions.onEmailChangedHandler,
+                                onPasswordChangedHandler: this.singUpFunctions.onPasswordChangedHandler,
+                                onSingUpClickHandler: this.singUpFunctions.onSingUpByEmailAndPasswordClickHandler
                             }}
                         />
                 }
