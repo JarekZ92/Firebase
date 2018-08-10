@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LogInForms from './LogInForms';
+import LogInForms from './LoginForms';
 
 import { auth, googleProvider } from '../FirebaseConfig'
 

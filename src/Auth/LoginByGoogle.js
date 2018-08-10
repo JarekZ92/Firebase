@@ -5,7 +5,7 @@ const LogInByGoogle = (props) => (
         <button
             onClick={props.onLogInClickHandler}
         >
-            Login!
+            Login by Google!
         </button>
     </div>
 )
