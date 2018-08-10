@@ -1,12 +1,12 @@
 import React from 'react'
 
+import LogInByGoogle from './LoginByGoogle'
+
 const LogInForms = (props) => (
     <div>
-        <button
-            onClick={props.onLogInClickHandler}
-        >
-            Login!
-        </button>
+        <LogInByGoogle
+            onLogInClickHandler={props.onLogInClickHandler}
+        />
     </div>
 )
 
