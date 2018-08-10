@@ -5,7 +5,7 @@ const LogInByEmailAndPassword = (props) => (
     <div>
         <div>
             <input
-                type="text"
+                type="email"
                 onChange={props.onEmailChangedHandler}
                 value={props.emailValue}
             />
