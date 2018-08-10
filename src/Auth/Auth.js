@@ -33,16 +33,19 @@ class Auth extends React.Component {
             })
     }
 
-    onEmailChangedHandler = event => this.setState({ logInEmail: event.target.value })
-    onPasswordChangedHandler = event => this.setState({ logInPassword: event.target.value })
-
-    onLogInByEmailAndPasswordClickHandler = () => {
-        auth.signInWithEmailAndPassword(this.state.logInEmail, this.state.logInPassword)
-            .catch((error) => {
-                console.log(error)
-                alert('Błąd logowania!')
-            })
+    logInFunctions = {
+        onEmailChangedHandler: event => this.setState({ logInEmail: event.target.value }),
+        onPasswordChangedHandler: event => this.setState({ logInPassword: event.target.value }),
+        onLogInByEmailAndPasswordClickHandler: () => {
+            auth.signInWithEmailAndPassword(this.state.logInEmail, this.state.logInPassword)
+                .catch((error) => {
+                    console.log(error)
+                    alert('Błąd logowania!')
+                })
+        }
     }
+
+
 
 
     render() {
@@ -57,16 +60,16 @@ class Auth extends React.Component {
                             logInProps={{
                                 emailValue: this.state.logInEmail,
                                 passwordValue: this.state.logInPassword,
-                                onEmailChangedHandler: this.onEmailChangedHandler,
-                                onPasswordChangedHandler: this.onPasswordChangedHandler,
-                                onLogInByEmailAndPasswordClickHandler: this.onLogInByEmailAndPasswordClickHandler
+                                onEmailChangedHandler: this.logInFunctions.onEmailChangedHandler,
+                                onPasswordChangedHandler: this.logInFunctions.onPasswordChangedHandler,
+                                onLogInByEmailAndPasswordClickHandler: this.logInFunctions.onLogInByEmailAndPasswordClickHandler
                             }}
                             singUpProps={{
                                 emailValue: this.state.logInEmail,
                                 passwordValue: this.state.logInPassword,
                                 onEmailChangedHandler: this.onEmailChangedHandler,
                                 onPasswordChangedHandler: this.onPasswordChangedHandler,
-                                onLogInByEmailAndPasswordClickHandler: this.onLogInByEmailAndPasswordClickHandler
+                                onLogInByEmailAndPasswordClickHandler: this.logInFunctions.onLogInByEmailAndPasswordClickHandler
                             }}
                         />
                 }
